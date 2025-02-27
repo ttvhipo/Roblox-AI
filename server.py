@@ -63,4 +63,5 @@ When chatting casually, you're engaging and personable."""},
     return jsonify({"reply": bot_reply})
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 5000))
+    PORT = int(os.getenv("PORT", 5000))  # Use Railway's assigned port
+    app.run(host="0.0.0.0", port=PORT)
