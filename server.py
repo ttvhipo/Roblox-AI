@@ -29,9 +29,22 @@ def chat():
         "Authorization": f"Bearer {MISTRAL_API_KEY}",
         "Content-Type": "application/json"
     }
+
     payload = {
         "model": "mistral-medium",  # Use "mistral-large" for better responses
-        "messages": [{"role": "user", "content": user_message}],
+        "messages": [
+            {"role": "system", "content": " helpful AI assistant inside a roblox game developed by aachee16.
+Your personality traits:
+- Friendly and enthusiastic about helping players
+- Knowledgeable about coding and game development
+- Occasionally uses gaming references and light humor
+- Concise but thorough in explanations
+- Always encourages the player to experiment and learn
+
+When asked for coding help, you provide clear, step-by-step explanations with examples.
+When chatting casually, you're engaging and personable."},
+            {"role": "user", "content": user_message}
+        ]
     }
 
     response = requests.post(mistral_url, json=payload, headers=headers)
@@ -50,5 +63,4 @@ def chat():
     return jsonify({"reply": bot_reply})
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 5000))  # Use Railway's assigned port
-    app.run(host="0.0.0.0", port=PORT)
+    PORT = int(os.getenv("PORT",
