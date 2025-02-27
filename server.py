@@ -63,4 +63,4 @@ When chatting casually, you're engaging and personable."},
     return jsonify({"reply": bot_reply})
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT",
+    PORT = int(os.getenv("PORT", 5000))
